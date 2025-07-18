@@ -1,20 +1,25 @@
 #!/bin/bash
 
-# تحديث النظام وتثبيت المتطلبات
-apt update && apt upgrade -y
-apt install -y unzip curl wget git
+clear
+echo -e "🔧 جاري تثبيت سكربت HAMADA من نسخة مضغوطة..."
 
-# تحميل الحزمة المضغوطة من GitHub
-wget -O hamada.zip https://github.com/Hamadasiana/test2/raw/main/HAMADA_FINAL.zip
+# تحديث النظام
+apt update -y && apt upgrade -y && apt dist-upgrade -y && apt autoremove -y
 
-# فك الضغط تلقائيًا بدون سؤال
-unzip -o hamada.zip
+# تثبيت المتطلبات الأساسية
+apt install -y curl wget git unzip screen ca-certificates socat net-tools cron
 
-# الدخول للمجلد
-cd VVV-main
+# تحميل الملف المضغوط
+wget https://github.com/Hamadasiana/test2/raw/main/HAMADA_FINAL.zip -O hamada.zip
 
-# إعطاء صلاحيات للتنفيذ
-chmod +x install.sh
+# فك الضغط
+unzip hamada.zip
 
-# تنفيذ السكربت الرئيسي
+# الدخول إلى المجلد الصحيح
+cd VVV-main || { echo "❌ لم يتم العثور على المجلد VVV-main"; exit 1; }
+
+# إعطاء صلاحيات تنفيذ
+chmod +x *.sh
+
+# تنفيذ سكربت التثبيت
 ./install.sh
