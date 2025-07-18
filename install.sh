@@ -12,7 +12,8 @@ mkdir -p /root/hamada-install
 cd /root/hamada-install
 
 # تحميل النسخة المضغوطة من GitHub
-wget https://github.com/Hamadasiana/HAMADA/raw/main/HAMADA_FINAL.zip -O hamada.zip
+wget wget https://github.com/Hamadasiana/test2/raw/main/HAMADA_FINAL.zip -O hamada.zip
+ -O hamada.zip
 
 # فك الضغط
 unzip hamada.zip
